@@ -1,0 +1,60 @@
+@page {
+    size: A5;
+    margin: 20mm;
+}
+
+body {
+    font-family: "Calibri", sans-serif;
+    line-height: 1.2;
+    font-size: 14px;
+    color: #333;
+}
+
+#cover {
+    height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#author {
+    text-align: center;
+    font-size: 24px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h2 {
+    margin: 50px;
+    font-style: italic;
+    font-size: 48px;
+}
+
+h3 {
+    margin-top: 250px;
+    font-size: 32px;
+    font-style: normal;
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
+}
+
+.page-break {
+    page-break-after: always;
+}
+
+.write-area {
+    border: 1px solid #cccc;
+    background-color: #fefefe;
+}
