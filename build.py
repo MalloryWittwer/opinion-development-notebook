@@ -27,8 +27,8 @@ def main(out_dir: str, topic: str, author: str, image_url: str, **kwargs):
 
     full_html = html_template.render(content=html_body)
 
-    topic_slug = topic.lower().replace(" ", "-")
-    out_file = out_dir / f"{topic_slug}_notebook.pdf"
+    topic_slug = topic.lower().replace(" ", "-") + "_"
+    out_file = out_dir / f"{topic_slug}notebook.pdf"
     HTML(string=full_html).write_pdf(target=out_file, stylesheets=[CSS('style.css')])
 
     print(f"Saved {out_file.resolve()}")
