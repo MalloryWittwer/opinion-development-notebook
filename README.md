@@ -1,6 +1,14 @@
 # Opinion Development Notebook
 
-Create 
+Create printable notebooks in booklet format to yelp you keep track and develop informed opinions about the world.
+
+The notebooks are generated from this [template]().
+
+**Customizations:**
+
+- Topic
+- Cover image
+- Name
 
 ## Installation
 

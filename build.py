@@ -44,19 +44,19 @@ if __name__=='__main__':
     parser.add_argument(
         "-t",
         "--topic",
-        default="Going to Mars",
+        default="",
         help="Booklet topic.",
     )
     parser.add_argument(
         "-a",
         "--author",
-        default="Elon Musk",
+        default="",
         help="Booklet author.",
     )
     parser.add_argument(
         "-i",
         "--image-url",
-        default="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+        default="https://github.com/MalloryWittwer/opinion-development-notebook/blob/main/assets/self_reflection.png",
         help="Cover image URL.",
     )
 
