@@ -29,3 +29,19 @@ python build.py . --topic "Pipe-weed" --author "Bilbo Baggins" --image-url "http
 ```
 
 For more details, see `python build.py --help`.
+
+## Print a notebook in booklet format
+
+**On Linux**
+
+You can use `pdfbook2` (`sudo apt-get install texlive-extra-utils`) to convert the notebook into booklet format:
+
+```{sh}
+pdfbook2 notebook.pdf
+```
+
+This will output a new file `notebook-book.pdf` in booklet format.
+
+**On Windows / MacOs**
+
+You can let the printer handle the booklet layout directly. In Adobe Acrobat Reader, choose "Booklet" in the print settings.
