@@ -25,7 +25,7 @@ This will save the file `notebook.pdf` in the current directory.
 To generate a notebook with customizations:
 
 ```{sh}
-python build.py . -t "Going to Mars" -a "Elon Musk" -i "http://<image-url>.png"
+python build.py . --topic "Pipe-weed" --author "Bilbo Baggins" --image-url "https://static.wikia.nocookie.net/lotr/images/d/d9/Longbottom_leaves.JPG"
 ```
 
 For more details, see `python build.py --help`.
