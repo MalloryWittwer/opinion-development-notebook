@@ -1,33 +1,28 @@
 from pathlib import Path
 import argparse
-import markdown
 from jinja2 import Template
 from weasyprint import HTML, CSS
 
 
-def main(out_dir: str, topic: str, author: str, image_url: str, **kwargs):
+def main(out_dir: str, topic: str, author: str, image_url: str):
     out_dir = Path(out_dir)
     if not out_dir.exists():
         print(f"Directory {out_dir.resolve()} does not exist.")
         return
     
-    with open("template.md", "r", encoding="utf-8") as f:
-        md_template = Template(f.read())
+    with open("template.html", "r", encoding="utf-8") as f:
+        html_template = Template(f.read())
 
-    md_content = md_template.render(
+    full_html = html_template.render(
         topic=topic,
         author=author,
         image_url=image_url,
     )
 
-    html_body = markdown.markdown(md_content)
-
-    with open("template.html", "r", encoding="utf-8") as f:
-        html_template = Template(f.read())
-
-    full_html = html_template.render(content=html_body)
-
-    topic_slug = topic.lower().replace(" ", "-") + "_"
+    topic_slug = topic.lower().replace(" ", "-")
+    if topic_slug != "":
+        topic_slug += "_"
+    
     out_file = out_dir / f"{topic_slug}notebook.pdf"
     HTML(string=full_html).write_pdf(target=out_file, stylesheets=[CSS('style.css')])
 
@@ -56,7 +51,7 @@ if __name__=='__main__':
     parser.add_argument(
         "-i",
         "--image-url",
-        default="https://github.com/MalloryWittwer/opinion-development-notebook/blob/main/assets/self_reflection.png",
+        default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png",
         help="Cover image URL.",
     )
 
