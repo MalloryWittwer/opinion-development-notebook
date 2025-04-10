@@ -4,7 +4,7 @@
 #
 
 app = 'opinion-development-notebook'
-primary_region = 'cdg'
+primary_region = 'fra'
 
 [build]
 
