@@ -2,6 +2,10 @@
 
 Create printable notebooks in booklet format to help you develop informed opinions about the world.
 
+↗️ Live app: https://opinion-development-notebook.fly.dev/
+
+![screenshot](./assets/screenshot.png)
+
 The notebooks are generated from this [template](./notebook.pdf). The **topic**, **cover image**, and **author name** can be customized.
 
 ## Installation
