@@ -14,6 +14,8 @@ pip install -r requirements.txt
 
 ## Create a notebook
 
+### Option 1: Via a Python script
+
 To generate the template notebook with no customizations:
 
 ```{sh}
@@ -22,13 +24,23 @@ python build.py .
 
 This will save the file `notebook.pdf` in the current directory.
 
-To generate a notebook with customizations:
+To generate a notebook with a custom author, title, and cover image:
 
 ```{sh}
 python build.py . --topic "Pipe-weed" --author "Bilbo Baggins" --image-url "https://static.wikia.nocookie.net/lotr/images/d/d9/Longbottom_leaves.JPG"
 ```
 
 For more details, see `python build.py --help`.
+
+### Option 2: Via the web app
+
+Start the web app:
+
+```
+uvicorn main:app
+```
+
+Open http://localhost:8000 in your browser to see the web app.
 
 ## Print a notebook in booklet format
 

@@ -1,2 +1,5 @@
 weasyprint
 jinja2
+fastapi
+uvicorn[standard]
+python-multipart

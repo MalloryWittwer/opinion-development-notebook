@@ -2,15 +2,17 @@ from pathlib import Path
 import argparse
 from jinja2 import Template
 from weasyprint import HTML, CSS
+from io import BytesIO
 
 
-def main(out_dir: str, topic: str, author: str, image_url: str):
-    out_dir = Path(out_dir)
-    if not out_dir.exists():
-        print(f"Directory {out_dir.resolve()} does not exist.")
-        return
-    
-    with open("template.html", "r", encoding="utf-8") as f:
+def generate_pdf(
+    topic: str,
+    author: str,
+    image_url: str,
+    target: str = None,
+    out_file: Path = None,
+) -> BytesIO:
+    with open("templates/notebook.html", "r", encoding="utf-8") as f:
         html_template = Template(f.read())
 
     full_html = html_template.render(
@@ -19,17 +21,37 @@ def main(out_dir: str, topic: str, author: str, image_url: str):
         image_url=image_url,
     )
 
+    if target == "bytes":
+        out_file = BytesIO()
+        HTML(string=full_html).write_pdf(
+            target=out_file, stylesheets=[CSS("static/notebook.css")]
+        )
+        out_file.seek(0)  # Reset the stream position to the beginning
+    else:
+        HTML(string=full_html).write_pdf(
+            target=out_file, stylesheets=[CSS("static/notebook.css")]
+        )
+
+    return out_file
+
+
+def main(out_dir: str, topic: str, author: str, image_url: str):
+    out_dir = Path(out_dir)
+    if not out_dir.exists():
+        print(f"Directory {out_dir.resolve()} does not exist.")
+        return
+
     topic_slug = topic.lower().replace(" ", "-")
     if topic_slug != "":
         topic_slug += "_"
-    
+
     out_file = out_dir / f"{topic_slug}notebook.pdf"
-    HTML(string=full_html).write_pdf(target=out_file, stylesheets=[CSS('style.css')])
+    saved_file = generate_pdf(topic, author, image_url, out_file=out_file)
 
-    print(f"Saved {out_file.resolve()}")
+    print(f"Saved {saved_file.resolve()}")
 
 
-if __name__=='__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Opinion Development Notebook CLI")
 
     parser.add_argument(
