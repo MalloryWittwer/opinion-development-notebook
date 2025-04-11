@@ -28,7 +28,7 @@ python build.py .
 
 This will save the file `notebook.pdf` in the current directory.
 
-To generate a notebook with a custom author, title, and cover image:
+To generate a notebook with a custom author, topic, and cover image:
 
 ```{sh}
 python build.py . --topic "Pipe-weed" --author "Bilbo Baggins" --image-url "https://static.wikia.nocookie.net/lotr/images/d/d9/Longbottom_leaves.JPG"

@@ -34,31 +34,31 @@ async def read_form(request: Request):
 # Pydantic model for validation
 class FormData(BaseModel):
     author: str
-    title: str
+    topic: str
     image_url: HttpUrl
 
 
 # Route to handle form submission
 @app.post("/submit")
 async def submit_form(
-    author: str = Form(...), title: str = Form(...), image_url: str = Form(...)
+    author: str = Form(...), topic: str = Form(...), image_url: str = Form(...)
 ):
-    if len(title) > 100:
+    if len(topic) > 100:
         raise HTTPException(
-            status_code=400, detail="Title must be no longer than 100 characters."
+            status_code=400, detail="Topic must be no longer than 100 characters."
         )
 
     try:
-        form_data = FormData(author=author, title=title, image_url=image_url)
+        form_data = FormData(author=author, topic=topic, image_url=image_url)
     except ValidationError as e:
         raise HTTPException(status_code=400, detail="Invalid Image URL format.")
 
-    pdf_bytes = generate_pdf(form_data.title, form_data.author, form_data.image_url, target="bytes")
+    pdf_bytes = generate_pdf(form_data.topic, form_data.author, form_data.image_url, target="bytes")
 
     return StreamingResponse(
         pdf_bytes,
         media_type="application/pdf",
         headers={
-            "Content-Disposition": f"attachment; filename={form_data.title.lower().replace(' ', '-')}_notebook.pdf"
+            "Content-Disposition": f"attachment; filename={form_data.topic.lower().replace(' ', '-')}_notebook.pdf"
         },
     )
