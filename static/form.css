@@ -22,15 +22,19 @@ body {
 }
 
 h1 {
-    font-size: 24px;
     margin-bottom: 20px;
-    color: #333333;
-}
-
-a {
-    text-decoration: none;
     color: #69361fff;
     font-size: 32px;
+}
+
+a i {
+    font-size: 24px; /* Adjust the size of the icon */
+    color: #333333; /* Set the color of the icon */
+    transition: color 0.3s ease;
+}
+
+a i:hover {
+    color: #69361f; /* Change color on hover */
 }
 
 input {

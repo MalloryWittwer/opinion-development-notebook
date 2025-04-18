@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Notebook</title>
+    <link rel="stylesheet" href="/static/form.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit Your Notebook</h1>
+        <div class="preview">
+            <h2>Notebook Preview</h2>
+            <p><strong>Topic:</strong>{{ topic }}</p>
+            <p><strong>Author:</strong>{{ author }}</p>
+            <img src="{{ image_url }}" alt="Notebook Cover" style="max-width: 100%; height: auto;">
+        </div>
+        <form action="/submit" method="post">
+            <label for="topic">Notebook Topic:</label><br>
+            <input type="text" id="topic" name="topic" value="{{ topic }}" required><br><br>
+
+            <label for="author">Author:</label><br>
+            <input type="text" id="author" name="author" value="{{ author }}" required><br><br>
+
+            <label for="image_url">Cover Image URL:</label><br>
+            <input type="url" id="image_url" name="image_url" value="{{ image_url }}"><br><br>
+
+            <h3>Facts</h3>
+            <p>Facts are raw, verifiable pieces of information.</p>
+
+            <label for="facts">List key facts you know or have heard about your chosen topic.
+                Where did these facts come from? (News, social media, publications,
+                someone told you, etc.).</label><br>
+            <input type="text" id="facts" name="facts" placeholder="Write here..."><br><br>
+            
+            <label for="trust">How much do you trust the facts you listed? Do you suspect that some of them might be wrong, or exaggerated?</label><br>
+            <input type="text" id="trust" name="trust" placeholder="Write here..."><br><br>
+
+            <label for="missing">What missing pieces of information would help you to better understand the subject?</label><br>
+            <input type="text" id="missing" name="missing" placeholder="Write here..."><br><br>
+            
+            <h3>Interpretations</h3>
+            <p>Interpretations are meaning that we give to facts.</p>
+
+            <label for="interpretations">What sense do you make of the topic at hand?</label><br>
+            <input type="text" id="interpretations" name="interpretations" placeholder="Write here..."><br><br>
+            
+            <label for="difficult">What do you find particularly difficult to understand about the issue?</label><br>
+            <input type="text" id="difficult" name="difficult" placeholder="Write here..."><br><br>
+            
+            <label for="assumptions">What are your assumptions? What do you think might be true, even if you cannot prove it?</label><br>
+            <input type="text" id="assumptions" name="assumptions" placeholder="Write here..."><br><br>
+
+            <h3>Influences</h3>
+            <p>Many factors influence the way we think.</p>
+
+            <label for="emotions">How does the issue make you feel? Why so?</label><br>
+            <input type="text" id="emotions" name="emotions" placeholder="Write here..."><br><br>
+
+            <label for="experiences">Can you recall past experiences that might affect the way you think
+                about the issue?</label><br>
+            <input type="text" id="experiences" name="experiences" placeholder="Write here..."><br><br>
+
+            <label for="yourself">How does the way you see yourself affect your opinion of the issue?</label><br>
+            <input type="text" id="yourself" name="yourself" placeholder="Write here..."><br><br>
+
+            <label for="others">Is the way you think about the issue affected by how you see others, or think they might behave?</label><br>
+            <input type="text" id="others" name="others" placeholder="Write here..."><br><br>
+            
+            <h3>Perspective</h3>
+            
+            <label for="positive">What <strong>positive</strong> aspects do you see about the issue?</label><br>
+            <input type="text" id="positive" name="positive" placeholder="Write here..."><br><br>
+            
+            <label for="negative">What <strong>negative</strong> aspects do you see about the issue?</label><br>
+            <input type="text" id="negative" name="negative" placeholder="Write here..."><br><br>
+            
+            <h3>Summary</h3>
+
+            <label for="summary">Based on everything you've explored, what conclusions can you
+                draw? How confident are you about them?</label><br>
+            <input type="text" id="summary" name="summary" placeholder="Write here..."><br><br>
+
+            <button type="submit">Download your notebook</button>
+        </form>
+    </div>
+</body>
+
+</html>
