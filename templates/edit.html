@@ -2,88 +2,136 @@
 <html>
 
 <head>
-    <title>Edit Notebook</title>
+    <title>Notebook Editor</title>
     <link rel="stylesheet" href="/static/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body>
-    <div class="container">
-        <h1>Edit Your Notebook</h1>
-        <div class="preview">
-            <h2>Notebook Preview</h2>
-            <p><strong>Topic:</strong>{{ topic }}</p>
-            <p><strong>Author:</strong>{{ author }}</p>
-            <img src="{{ image_url }}" alt="Notebook Cover" style="max-width: 100%; height: auto;">
-        </div>
-        <form action="/submit" method="post">
-            <label for="topic">Notebook Topic:</label><br>
-            <input type="text" id="topic" name="topic" value="{{ topic }}" required><br><br>
+<body class="edit-page">
+    <div class="container edit-container">
+        <nav class="sidebar">
+            <h3>Contents</h3>
+            <ul>
+                <a href="#main-form">
+                    <li>Cover</li>
+                </a>
+                <a href="#facts-section">
+                    <li>Facts</li>
+                </a>
+                <a href="#interpretations-section">
+                    <li>Interpretations</li>
+                </a>
+                <a href="#influences-section">
+                    <li>Influences</li>
+                </a>
+                <a href="#perspective-section">
+                    <li>Perspective</li>
+                </a>
+                <a href="#summary-section" style="margin-bottom: 10px;">
+                    <li>Summary</li>
+                </a>
+                <button type="submit"><i class="fa-solid fa-download"></i> Download PDF</button>
+            </ul>
+        </nav>
+        <div class="main-form" id="main-form">
+            <!-- <h1>Edit Your Notebook</h1> -->
+            <div class="preview">
+                <!-- <h2>Notebook Preview</h2> -->
+                <h2>{{ topic }}</h2>
+                <h4>{{ author }}</h4>
+                <img src="{{ image_url }}" alt="Notebook Cover"
+                    style="max-width: 60%; height: auto; margin-bottom: 40px;">
+            </div>
+            <form action="/submit" method="post">
+                <!-- <label for="topic">Notebook Topic:</label><br> -->
+                <!-- <input type="text  " id="topic" name="topic" value="{{ topic }}" required><br><br> -->
 
-            <label for="author">Author:</label><br>
-            <input type="text" id="author" name="author" value="{{ author }}" required><br><br>
+                <!-- <label for="author">Author:</label><br> -->
+                <!-- <input type="text" id="author" name="author" value="{{ author }}" required><br><br> -->
 
-            <label for="image_url">Cover Image URL:</label><br>
-            <input type="url" id="image_url" name="image_url" value="{{ image_url }}"><br><br>
+                <!-- <label for="image_url">Cover Image URL:</label><br> -->
+                <!-- <input type="url" id="image_url" name="image_url" value="{{ image_url }}"><br><br> -->
 
-            <h3>Facts</h3>
-            <p>Facts are raw, verifiable pieces of information.</p>
+                <section id="facts-section">
+                    <h3>Facts</h3>
+                    <p class="section-subtitle">Facts are raw, verifiable pieces of information.</p>
 
-            <label for="facts">List key facts you know or have heard about your chosen topic.
-                Where did these facts come from? (News, social media, publications,
-                someone told you, etc.).</label><br>
-            <input type="text" id="facts" name="facts" placeholder="Write here..."><br><br>
-            
-            <label for="trust">How much do you trust the facts you listed? Do you suspect that some of them might be wrong, or exaggerated?</label><br>
-            <input type="text" id="trust" name="trust" placeholder="Write here..."><br><br>
+                    <label for="facts">List key facts you know or have heard about your chosen topic.
+                        Where did these facts come from? (News, social media, publications,
+                        someone told you, etc.).</label><br>
+                    <textarea id="facts" name="facts" placeholder="Write here..." rows="5"></textarea><br><br>
 
-            <label for="missing">What missing pieces of information would help you to better understand the subject?</label><br>
-            <input type="text" id="missing" name="missing" placeholder="Write here..."><br><br>
-            
-            <h3>Interpretations</h3>
-            <p>Interpretations are meaning that we give to facts.</p>
+                    <label for="trust">How much do you trust the facts you listed? Do you suspect that some of them
+                        might be wrong, or exaggerated?</label><br>
+                    <textarea id="trust" name="trust" placeholder="Write here..." rows="5"></textarea><br><br>
 
-            <label for="interpretations">What sense do you make of the topic at hand?</label><br>
-            <input type="text" id="interpretations" name="interpretations" placeholder="Write here..."><br><br>
-            
-            <label for="difficult">What do you find particularly difficult to understand about the issue?</label><br>
-            <input type="text" id="difficult" name="difficult" placeholder="Write here..."><br><br>
-            
-            <label for="assumptions">What are your assumptions? What do you think might be true, even if you cannot prove it?</label><br>
-            <input type="text" id="assumptions" name="assumptions" placeholder="Write here..."><br><br>
+                    <label for="missing">What missing pieces of information would help you to better understand the
+                        subject?</label><br>
+                    <textarea id="missing" name="missing" placeholder="Write here..." rows="5"></textarea><br><br>
 
-            <h3>Influences</h3>
-            <p>Many factors influence the way we think.</p>
+                </section>
+                <section id="interpretations-section">
+                    <h3>Interpretations</h3>
+                    <p class="section-subtitle">Interpretations are meaning that we give to facts.</p>
 
-            <label for="emotions">How does the issue make you feel? Why so?</label><br>
-            <input type="text" id="emotions" name="emotions" placeholder="Write here..."><br><br>
+                    <label for="interpretations">What sense do you make of the topic at hand?</label><br>
+                    <textarea id="interpretations" name="interpretations" placeholder="Write here..."
+                        rows="5"></textarea><br><br>
 
-            <label for="experiences">Can you recall past experiences that might affect the way you think
-                about the issue?</label><br>
-            <input type="text" id="experiences" name="experiences" placeholder="Write here..."><br><br>
+                    <label for="difficult">What do you find particularly difficult to understand about the
+                        issue?</label><br>
+                    <textarea id="difficult" name="difficult" placeholder="Write here..." rows="5"></textarea><br><br>
 
-            <label for="yourself">How does the way you see yourself affect your opinion of the issue?</label><br>
-            <input type="text" id="yourself" name="yourself" placeholder="Write here..."><br><br>
+                    <label for="assumptions">What are your assumptions? What do you think might be true, even if you
+                        cannot prove it?</label><br>
+                    <textarea id="assumptions" name="assumptions" placeholder="Write here..."
+                        rows="5"></textarea><br><br>
 
-            <label for="others">Is the way you think about the issue affected by how you see others, or think they might behave?</label><br>
-            <input type="text" id="others" name="others" placeholder="Write here..."><br><br>
-            
-            <h3>Perspective</h3>
-            
-            <label for="positive">What <strong>positive</strong> aspects do you see about the issue?</label><br>
-            <input type="text" id="positive" name="positive" placeholder="Write here..."><br><br>
-            
-            <label for="negative">What <strong>negative</strong> aspects do you see about the issue?</label><br>
-            <input type="text" id="negative" name="negative" placeholder="Write here..."><br><br>
-            
-            <h3>Summary</h3>
+                </section>
+                <section id="influences-section">
+                    <h3>Influences</h3>
+                    <p class="section-subtitle">Many factors influence the way we think.</p>
 
-            <label for="summary">Based on everything you've explored, what conclusions can you
-                draw? How confident are you about them?</label><br>
-            <input type="text" id="summary" name="summary" placeholder="Write here..."><br><br>
+                    <label for="emotions">How does the issue make you feel? Why so?</label><br>
+                    <textarea id="emotions" name="emotions" placeholder="Write here..." rows="5"></textarea><br><br>
 
-            <button type="submit">Download your notebook</button>
-        </form>
-    </div>
+                    <label for="experiences">Can you recall past experiences that might affect the way you think
+                        about the issue?</label><br>
+                    <textarea id="experiences" name="experiences" placeholder="Write here..."
+                        rows="5"></textarea><br><br>
+
+                    <label for="yourself">How does the way you see yourself affect your opinion of the
+                        issue?</label><br>
+                    <textarea id="yourself" name="yourself" placeholder="Write here..." rows="5"></textarea><br><br>
+
+                    <label for="others">Is the way you think about the issue affected by how you see others, or think
+                        they might behave?</label><br>
+                    <textarea id="others" name="others" placeholder="Write here..." rows="5"></textarea><br><br>
+
+                </section>
+                <section id="perspective-section">
+                    <h3>Perspective</h3>
+
+                    <label for="positive">What positive aspects do you see about the issue?</label><br>
+                    <textarea id="positive" name="positive" placeholder="Write here..." rows="5"></textarea><br><br>
+
+                    <label for="negative">What negative aspects do you see about the issue?</label><br>
+                    <textarea id="negative" name="negative" placeholder="Write here..." rows="5"></textarea><br><br>
+
+                </section>
+                <section id="summary-section">
+                    <h3>Summary</h3>
+
+                    <label for="summary">Based on everything you've explored, what conclusions can you
+                        draw? How confident are you about them?</label><br>
+                    <textarea id="summary" name="summary" placeholder="Write here..." rows="5"></textarea><br><br>
+                </section>
+                <!-- <section id="download-section">
+                    <button type="submit" id="download-edits"><i class="fa-solid fa-download"></i> Download PDF</button>
+                </section> -->
+            </form>
+        </div> <!-- end main-form -->
+    </div> <!-- end container -->
 </body>
 
 </html>

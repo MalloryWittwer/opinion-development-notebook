@@ -1,15 +1,125 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/static/assets/background.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('/static/assets/background.png');
     background-repeat: repeat;
     background-size: 300px;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
+}
+
+.container.edit-container {
+    display: flex;
+    align-items: flex-start;
+    width: calc(100% - 40px);
+    /* max-width: 1200px; */
+    max-width: 1100px;
+    margin: 20px auto;
+    height: auto;
+}
+
+body.edit-page {
+    display: block;
+    height: auto;
+    align-items: unset;
+    justify-content: unset;
+    overflow-y: auto;
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+    flex: 0 0 200px;
+    margin-right: 20px;
+    /* background: #ffffff; */
+    /* padding: 10px; */
+    /* border-radius: 4px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #69361f;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    /* margin: 10px 0; */
+}
+
+.sidebar li {
+    /* margin-bottom: 10px; */
+    padding: 10px;
+}
+
+.sidebar li:hover {
+    background-color: #fee2d7ff;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #69361f;
+    width: 100%;
+    display: block;
+}
+
+h2 {
+    font-size: 54px;
+    color: #333;
+}
+
+h4 {
+    font-size: 24px;
+    color: #333;
+}
+
+.main-form {
+    flex: 1;
+    /* background: #fdf2ebff; */
+    background-color: white;
+    /* padding: 20px; */
+    /* border-radius: 8px; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.main-form section {
+    margin-bottom: 40px;
+    border-top: 2px solid #eee;
+    padding: 20px;
+    /* border-radius: 8px; */
+}
+
+.main-form section h3 {
+    color: #333;
+    /* margin-top: 0; */
+    /* color: #69361f; */
+    /* border-bottom: 2px solid #fb7e4aff; */
+    padding-bottom: 5px;
+    font-size: 32px;
+}
+
+.main-form section label {
+    /* text-align: left; */
+    /* color: red; */
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 12px 0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    min-height: 200px;
 }
 
 .container {
@@ -28,18 +138,19 @@ h1 {
 }
 
 a i {
-    font-size: 24px; /* Adjust the size of the icon */
-    color: #333333; /* Set the color of the icon */
+    font-size: 24px;
+    color: #69361f;
     transition: color 0.3s ease;
+    opacity: 0.8;
 }
 
 a i:hover {
-    color: #69361f; /* Change color on hover */
+    opacity: 1.0;
 }
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 12px 8px;
     margin: 8px 0;
     border: 1px solid #cccccc;
     border-radius: 4px;
@@ -55,8 +166,79 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    width: 100%;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #fb682bff;
+}
+
+#download-btn {
+    background-color: transparent;
+    /* border: 2px solid #fb7e4aff; */
+    color: #69361fff;
+    opacity: 0.8;
+}
+
+#download-btn:hover {
+    opacity: 1.0;
+}
+
+/* #summary-section {
+    margin-bottom: 0;
+} */
+
+#download-edits {
+    /* max-width: 600px; */
+    margin-bottom: 40px;
+    background-color: transparent;
+    color: #69361fff;
+    opacity: 0.8;
+    font-size: 22px;
+}
+
+#download-edits:hover {
+    opacity: 1.0;
+}
+
+#download-section {
+    border-top: 0px;
+    margin-bottom: 20px;
+    padding: 0;
+    /* background-color: red; */
+}
+
+footer {
+    color: #aaa;
+    margin: 10px;
+    /* visibility: hidden; */
+}
+
+#credits {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 0px;
+    height: 0px;
+    border-left: 40px solid transparent;
+    border-top: 40px solid transparent;
+    border-right: 40px solid #000000dd;
+    border-bottom: 40px solid #000000dd;
+}
+
+#github {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+p {
+    color: #69361f;
+    line-height:150%;
+}
+
+.section-subtitle {
+    color: #333;
+    margin-bottom: 40px;
+    font-style: italic;
 }

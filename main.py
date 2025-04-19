@@ -129,7 +129,9 @@ async def edit_notebook(
     request: Request,
     author: str = Form(...),
     topic: str = Form(...),
-    image_url: str = Form(...),
+    image_url: str = Form(
+        default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png"
+    ),
 ):
     return templates.TemplateResponse(
         "edit.html",
