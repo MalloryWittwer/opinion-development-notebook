@@ -13,15 +13,15 @@
         <h1>Opinion Development Notebook</h1>
         <p>Choose a topic and start writing. You can edit the notebook online or download it in printable format.</p>
         <form action="/submit" method="post">
-            <input type="text" id="topic" name="topic" placeholder="Notebook topic" required><br><br>
-            <input type="text" id="author" name="author" placeholder="Your name" required><br><br>
+            <input type="text" id="topic" name="topic" placeholder="Notebook topic" required>
+            <input type="text" id="author" name="author" placeholder="Your name" required>
             <!-- <input type="url" id="image_url" name="image_url"
                 placeholder="Cover image URL (https://example.com/image.png)"
                 pattern="https?://.*\.(png|jpe?g|gif|svg)$"
                 title="Please enter a valid image URL ending with .png, .jpg, .jpeg, .gif, or .svg"><br><br> -->
             <button type="submit" formaction="/edit"><i class="fa-solid fa-pen-to-square"></i> Edit online</button>
-            <button id="download-btn" type="submit" formaction="/submit"><i class="fa-solid fa-download"></i> Download
-                PDF</button>
+            <button id="download-btn" type="submit" formaction="/submit"><i class="fa-solid fa-download"></i>
+                Download PDF</button>
         </form>
         <div id="credits">
             <a href="https://github.com/MalloryWittwer/opinion-development-notebook" target="_blank">
