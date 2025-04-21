@@ -20,6 +20,13 @@
                 pattern="https?://.*\.(png|jpe?g|gif|svg)$"
                 title="Please enter a valid image URL ending with .png, .jpg, .jpeg, .gif, or .svg"><br><br> -->
             <button type="submit" formaction="/edit"><i class="fa-solid fa-pen-to-square"></i> Edit online</button>
+
+            <div class="or-wrapper">
+                <div class="horizontal-line"></div>
+                <p style="text-align: center; margin: 10px 0;">OR</p>
+                <div class="horizontal-line"></div>
+            </div>
+
             <button id="download-btn" type="submit" formaction="/submit"><i class="fa-solid fa-download"></i>
                 Download PDF</button>
         </form>
@@ -29,7 +36,7 @@
             </a>
         </div>
     </div>
-    <footer>© 2025 Opinion Development Notebook. All rights reserved.</footer>
+    {% include 'footer.html' %}
 </body>
 
 </html>

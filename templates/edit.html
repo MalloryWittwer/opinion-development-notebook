@@ -5,10 +5,14 @@
     <title>Notebook Editor</title>
     <link rel="stylesheet" href="/static/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="/static/js/edit.js" defer></script>
 </head>
 
 <body class="edit-page">
     <div class="container edit-container">
+        <nav class="header-nav">
+            <a href="/">Exit <i class="fa-solid fa-right-from-bracket"></i></a>
+        </nav>
         <nav class="sidebar">
             <h3>Contents</h3>
             <ul>
@@ -31,27 +35,32 @@
                     <li>Summary</li>
                 </a>
                 <button type="submit"><i class="fa-solid fa-download"></i> Download PDF</button>
+
+                <div class="save-wrapper">
+                    <a href="javascript:void(0)" onclick="saveDraft()" id="save-draft-btn">Save draft</a>
+                    <a href="javascript:void(0)" onclick="loadDraft()" id="load-draft-btn">Load draft</a>
+                </div>
             </ul>
         </nav>
         <div class="main-form" id="main-form">
-            <!-- <h1>Edit Your Notebook</h1> -->
+            <input type="file" id="draft-file-input" accept="application/json" style="display:none" />
             <div class="preview">
-                <!-- <h2>Notebook Preview</h2> -->
                 <h2>{{ topic }}</h2>
                 <h4>{{ author }}</h4>
                 <img src="{{ image_url }}" alt="Notebook Cover"
                     style="max-width: 60%; height: auto; margin-bottom: 40px;">
             </div>
             <form action="/submit" method="post">
-                <!-- <label for="topic">Notebook Topic:</label><br> -->
-                <!-- <input type="text  " id="topic" name="topic" value="{{ topic }}" required><br><br> -->
+                <section id="topic-section">
+                    <label for="topic">Notebook topic:</label>
+                    <input type="text  " id="topic" name="topic" value="{{ topic }}" required><br><br>
 
-                <!-- <label for="author">Author:</label><br> -->
-                <!-- <input type="text" id="author" name="author" value="{{ author }}" required><br><br> -->
+                    <label for="author">Your name:</label>
+                    <input type="text" id="author" name="author" value="{{ author }}" required><br><br>
 
-                <!-- <label for="image_url">Cover Image URL:</label><br> -->
-                <!-- <input type="url" id="image_url" name="image_url" value="{{ image_url }}"><br><br> -->
-
+                    <!-- <label for="image_url">Cover Image URL:</label><br> -->
+                    <!-- <input type="url" id="image_url" name="image_url" value="{{ image_url }}"><br><br> -->
+                </section>
                 <section id="facts-section">
                     <h3>Facts</h3>
                     <p class="section-subtitle">Facts are raw, verifiable pieces of information.</p>
@@ -130,8 +139,9 @@
                     <button type="submit" id="download-edits"><i class="fa-solid fa-download"></i> Download PDF</button>
                 </section> -->
             </form>
-        </div> <!-- end main-form -->
-    </div> <!-- end container -->
+        </div>
+    </div>
+    {% include 'footer.html' %}
 </body>
 
 </html>

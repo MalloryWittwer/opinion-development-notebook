@@ -1,0 +1,27 @@
+<footer>
+    <a href="javascript:void(0)" onclick="openModal('about-modal')">About</a><br>
+    © 2025 Opinion Development Notebook
+</footer>
+<div id="about-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('about-modal')">&times;</span>
+        <h2>About the Opinion Development Notebook</h2>
+        <p>The Opinion Development Notebook helps you reflect on a topic by exploring facts, interpretations,
+            influences, and summarizing your conclusions. Fill out each section to develop a well-informed
+            perspective.
+        </p>
+    </div>
+</div>
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
+    }
+</script>
