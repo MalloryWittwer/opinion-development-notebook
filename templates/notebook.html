@@ -9,7 +9,9 @@
 <body>
     <h1>Opinion Development Notebook</h1>
 
+    {% if image_url %}
     <img id="cover" src="{{ image_url }}" alt="Cover image">
+    {% endif %}
 
     <h2>{{ topic }}</h2>
 

@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, HttpUrl, ValidationError
+from typing import Optional
 
 from build import generate_pdf
 
@@ -31,7 +32,7 @@ async def read_form(request: Request):
 class FormData(BaseModel):
     author: str
     topic: str
-    image_url: HttpUrl
+    image_url: Optional[HttpUrl]
     facts: str
     trust: str
     missing: str
@@ -52,7 +53,8 @@ async def submit_form(
     author: str = Form(...),
     topic: str = Form(...),
     image_url: str = Form(
-        default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png"
+        # default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png"
+        default=None
     ),
     facts: str = Form(default=""),
     trust: str = Form(default=""),
@@ -72,6 +74,9 @@ async def submit_form(
         raise HTTPException(
             status_code=400, detail="Topic must be no longer than 100 characters."
         )
+    
+    # Ensure image_url is None if empty
+    image_url = image_url if image_url else None
 
     try:
         form_data = FormData(
@@ -130,7 +135,8 @@ async def edit_notebook(
     author: str = Form(...),
     topic: str = Form(...),
     image_url: str = Form(
-        default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png"
+        default=None,
+        # default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png"
     ),
 ):
     return templates.TemplateResponse(

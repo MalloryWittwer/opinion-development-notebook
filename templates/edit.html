@@ -34,7 +34,7 @@
                 <a href="#summary-section" style="margin-bottom: 10px;">
                     <li>Summary</li>
                 </a>
-                <button type="submit"><i class="fa-solid fa-download"></i> Download PDF</button>
+                <button id="download-pdf-btn" type="submit"><i class="fa-solid fa-download"></i> Download PDF</button>
 
                 <div class="save-wrapper">
                     <a href="javascript:void(0)" onclick="saveDraft()" id="save-draft-btn">Save draft</a>
@@ -46,10 +46,12 @@
             <input type="file" id="draft-file-input" accept="application/json" style="display:none" />
             <div class="preview">
                 <h2 id="preview-topic">{{ topic }}</h2>
+                {% if image_url %}
                 <img id="preview-image" src="{{ image_url }}" alt="Notebook Cover">
+                {% endif %}
                 <h4 id="preview-author">{{ author }}</h4>
             </div>
-            <form action="/submit" method="post">
+            <form id="main-form" action="/submit" method="post">
                 <section id="topic-section">
                     <label for="topic">Topic</label>
                     <input type="text" id="topic" name="topic" value="{{ topic }}" required><br>

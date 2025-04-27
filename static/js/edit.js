@@ -13,13 +13,13 @@ function isFormDirty() {
     return false;
 }
 
-// Warn the user about unsaved changes before leaving the page
-window.addEventListener('beforeunload', function (e) {
-    if (isFormDirty()) {
-        e.preventDefault();
-        e.returnValue = '';
-    }
-});
+// // Warn the user about unsaved changes before leaving the page
+// window.addEventListener('beforeunload', function (e) {
+//     if (isFormDirty()) {
+//         e.preventDefault();
+//         e.returnValue = '';
+//     }
+// });
 
 // Save the draft as a JSON file
 function saveDraft() {
@@ -102,3 +102,32 @@ function updatePreview() {
         previewImage.style.display = "none"; // Hide the image if no URL is provided
     }
 }
+
+// Trigger form submission when the "Download PDF" button is clicked
+document.getElementById("download-pdf-btn").addEventListener("click", function () {
+    const form = document.getElementById("main-form");
+    if (form) {
+        // Temporarily disable the beforeunload event listener
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+
+        form.submit(); // Programmatically submit the form
+
+        // Optionally, re-enable the beforeunload event listener after a short delay
+        setTimeout(() => {
+            window.addEventListener('beforeunload', handleBeforeUnload);
+        }, 1000);
+    } else {
+        console.error("Form not found!");
+    }
+});
+
+// Function to handle the beforeunload event
+function handleBeforeUnload(e) {
+    if (isFormDirty()) {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+}
+
+// Add the beforeunload event listener
+window.addEventListener('beforeunload', handleBeforeUnload);

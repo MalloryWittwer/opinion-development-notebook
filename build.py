@@ -99,7 +99,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i",
         "--image-url",
-        default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png",
+        default=None,
+        # default="https://raw.githubusercontent.com/MalloryWittwer/opinion-development-notebook/refs/heads/main/assets/self_reflection.png",
         help="Cover image URL.",
     )
 
