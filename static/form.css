@@ -1,9 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.75)), url('/static/assets/background.png');
     background-repeat: repeat;
     background-size: 300px;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     display: flex;
@@ -91,6 +96,12 @@ h4 {
     margin-bottom: 40px;
     border-top: 2px solid #eee;
     padding: 20px;
+    scroll-margin-top: 40px;
+}
+
+.main-form label {
+    display: block;
+    text-align: left;
 }
 
 .main-form section h3 {
@@ -102,7 +113,7 @@ h4 {
 textarea {
     width: 100%;
     padding: 8px;
-    margin: 12px 0;
+    margin-bottom: 12px;
     border: 1px solid #cccccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -141,6 +152,7 @@ a i:hover {
 }
 
 input {
+    display: block;
     width: 100%;
     padding: 12px 8px;
     margin: 8px 0;
@@ -148,6 +160,31 @@ input {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+
+.required-fields input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.optional-fields {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+    /* Lighter color for optional fields */
+}
+
+.optional-fields input {
+    margin-bottom: 20px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px dashed #ccc;
+    /* Dashed border to indicate optional */
+    background-color: #f9f9f9;
+    /* Subtle background color */
+}
+
 
 button {
     background-color: #fb7e4aff;
@@ -275,8 +312,9 @@ p {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
     background-color: #fff;
     margin: 10% auto;
@@ -286,6 +324,7 @@ p {
     max-width: 600px;
     position: relative;
 }
+
 .close-btn {
     position: absolute;
     top: 10px;
@@ -295,6 +334,7 @@ p {
     font-weight: bold;
     cursor: pointer;
 }
+
 .close-btn:hover {
     color: #000;
 }
@@ -307,6 +347,7 @@ p {
     margin: 0;
     margin-top: 10px;
 }
+
 .or-wrapper p {
     padding: 5px;
     color: #69361fff;
@@ -323,18 +364,66 @@ p {
 }
 
 .save-wrapper {
-    /* background-color: greenyellow; */
     display: flex;
     padding: 15px 20px;
-    /* padding-top: 15px; */
 }
 
 .save-wrapper a {
     font-size: 14px;
-    /* background-color: red; */
     opacity: 0.8;
 }
 
 .save-wrapper a:hover {
     opacity: 1.0;
+}
+
+#preview-image {
+    max-width: 80%;
+    height: auto;
+}
+
+#topic-section {
+    width: 400px;
+    margin: auto;
+    margin-bottom: 12px;
+    border-top: 0px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#topic-section input {
+    margin: 0;
+    margin-top: 5px;
+}
+
+#topic-section label {
+    font-weight: bold;
+}
+
+#topic-section button {
+    background-color: #eee;
+    color: #333;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    opacity: 0.8;
+}
+
+#topic-section button:hover {
+    opacity: 1;
+}
+
+.preview {
+    height: 700px;
+    width: 80%;
+    margin: 20px auto;
+    border: 2px solid #eee;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
